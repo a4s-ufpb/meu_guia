@@ -5,8 +5,8 @@ import java.util.List;
 
 
 public class AtrativoTuristico {
-    private int id;
-    private String nome;
+    int id;
+    String nome;
     private String municipio;
     private String tipo;
     private String URL_site;
@@ -41,7 +41,7 @@ public class AtrativoTuristico {
                              String LinkFonte4, String MaisInformacoes1, String LinkMaisInformacoes1,
                              String MaisInformacoes2, String LinkMaisInformacoes2, String MaisInformacoes3,
                              String LinkMaisInformacoes3, BigDecimal latitude, BigDecimal longitude,
-                             TipoAtrativo tipoAtrativo, List<SegmentacaoTuristica> segmentacoes) {
+                                 TipoAtrativo tipoAtrativo, List<SegmentacaoTuristica> segmentacoes) {
         this.id = id;
         this.nome = nome;
         this.municipio = municipio;
@@ -72,25 +72,5 @@ public class AtrativoTuristico {
     }
 
     // Métodos Getters e Setters omitidos por brevidade
-}
-
-public class AtrativoTuristicoAccessor {
-    public static int getId(AtrativoTuristico atrativo) {
-        return atrativo.id;
-    }
-
-    public static void setId(AtrativoTuristico atrativo, int id) {
-        atrativo.id = id;
-    }
-
-    public static String getNome(AtrativoTuristico atrativo) {
-        return atrativo.nome;
-    }
-
-    public static void setNome(AtrativoTuristico atrativo, String nome) {
-        atrativo.nome = nome;
-    }
-
-    // Implemente os métodos getters e setters para os outros campos
 }
 
