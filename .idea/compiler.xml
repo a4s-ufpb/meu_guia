@@ -9,5 +9,8 @@
         <module name="ProjetoMeuGuia" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="meu_guia" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
