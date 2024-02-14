@@ -71,7 +71,7 @@ public class ConexaoMySQL {
                     int idade = resultSet.getInt("idade");
 
                     // Faça o que desejar com os dados, por exemplo, imprimi" +r no console
-                            System.out.println("ID: " + id + ", Nome: " + nome + ", Idade:  idade);
+                            System.out.println("ID: " + id + ", Nome: " + nome + ", Idade:  idade");
                 }
 
                 // Fechando a conexão
