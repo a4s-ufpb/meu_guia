@@ -3,10 +3,9 @@ package br.dcx.ufpb.meuguia;
 import java.math.BigDecimal;
 import java.util.List;
 
-
 public class AtrativoTuristico {
-    int id;
-    String nome;
+    private long id;
+    private String nome;
     private String municipio;
     private String tipo;
     private String URL_site;
@@ -33,11 +32,15 @@ public class AtrativoTuristico {
     private TipoAtrativo tipoAtrativo;
     private List<SegmentacaoTuristica> segmentacoes;
 
-    public int getId() {
+    public AtrativoTuristico() {
+
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -250,14 +253,36 @@ public class AtrativoTuristico {
     }
 
     // Construtor
-    public AtrativoTuristico(int id, String nome, String municipio, String tipo, String URL_site, String descricao,
+
+    //public AtrativoTuristico(){
+        //this(1, "", "", "", "", "", "", "", );
+    //}
+
+
+    public AtrativoTuristico(long id, String nome, String municipio, String tipo) {
+        this.id = id;
+        this.nome = nome;
+        this.municipio = municipio;
+        this.tipo = tipo;
+    }
+
+    public AtrativoTuristico(long id, String nome, String municipio, String tipo, String URL_site, String descricao,
+                             String URL_foto, String legenda_Foto, String link_mapa, String fonte1_informacoes,
+                             String link_fonte1, String MaisInformacoes1, String LinkMaisInformacoes1,
+                             BigDecimal latitude, BigDecimal longitude,
+                             TipoAtrativo tipoAtrativo, List<SegmentacaoTuristica> segmentacoes){
+        this(id, nome, municipio, tipo, URL_site, descricao, URL_foto, legenda_Foto, link_mapa, fonte1_informacoes, link_fonte1,"", "", "", "", "", "", MaisInformacoes1, LinkMaisInformacoes1,"", "", "", "",
+                latitude, longitude, tipoAtrativo, segmentacoes);
+    }
+
+    public AtrativoTuristico(long id, String nome, String municipio, String tipo, String URL_site, String descricao,
                              String URL_foto, String legenda_Foto, String link_mapa, String fonte1_informacoes,
                              String link_fonte1, String fonte2_informacoes, String LinkFonte2,
                              String Fonte3Informacoes, String LinkFonte3, String Fonte4Informacoes,
                              String LinkFonte4, String MaisInformacoes1, String LinkMaisInformacoes1,
                              String MaisInformacoes2, String LinkMaisInformacoes2, String MaisInformacoes3,
                              String LinkMaisInformacoes3, BigDecimal latitude, BigDecimal longitude,
-                                 TipoAtrativo tipoAtrativo, List<SegmentacaoTuristica> segmentacoes) {
+                             TipoAtrativo tipoAtrativo, List<SegmentacaoTuristica> segmentacoes) {
         this.id = id;
         this.nome = nome;
         this.municipio = municipio;
@@ -289,4 +314,3 @@ public class AtrativoTuristico {
 
     // Métodos Getters e Setters omitidos por brevidade
 }
-
