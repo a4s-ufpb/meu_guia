@@ -36,6 +36,23 @@ public class AtrativoTuristico {
 
     }
 
+    public AtrativoTuristico(String nome, String municipio, String tipo, String URL_site, String descricao, String URL_foto, String legenda_Foto, String link_mapa, String fonte1_informacoes, String link_fonte1, String maisInformacoes1, String linkMaisInformacoes1, BigDecimal latitude, BigDecimal longitude) {
+        this.nome = nome;
+        this.municipio = municipio;
+        this.tipo = tipo;
+        this.URL_site = URL_site;
+        this.descricao = descricao;
+        this.URL_foto = URL_foto;
+        this.legenda_Foto = legenda_Foto;
+        this.link_mapa = link_mapa;
+        this.fonte1_informacoes = fonte1_informacoes;
+        this.link_fonte1 = link_fonte1;
+        MaisInformacoes1 = maisInformacoes1;
+        LinkMaisInformacoes1 = linkMaisInformacoes1;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
     public long getId() {
         return id;
     }

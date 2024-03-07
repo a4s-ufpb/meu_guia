@@ -39,29 +39,43 @@ public class AtrativosBD {
 
             // Criando a tabela de tipos
             Statement statement = conexao.createStatement();
-            String createTableTiposSQL = "CREATE TABLE tipos (" +
+            String createTableTiposSQL = "CREATE TABLE IF NOT EXISTS tipos (" +
                     "id INT PRIMARY KEY AUTO_INCREMENT," +
                     "nome VARCHAR(255))";
             statement.executeUpdate(createTableTiposSQL);
             System.out.println("Tabela tipos criada com sucesso.");
 
             // Criando a tabela de segmentações
-            String createTableSegmentacoesSQL = "CREATE TABLE segmentacoes (" +
+            String createTableSegmentacoesSQL = "CREATE TABLE IF NOT EXISTS segmentacoes (" +
                     "id INT PRIMARY KEY AUTO_INCREMENT," +
                     "nome VARCHAR(255))";
             statement.executeUpdate(createTableSegmentacoesSQL);
             System.out.println("Tabela segmentacoes criada com sucesso.");
 
             // Criando a tabela de atrativo
-            String createTableAtrativoSQL = "CREATE TABLE atrativo (" +
+            String createTableAtrativoSQL = "CREATE TABLE IF NOT EXISTS atrativo (" +
                     "id INT PRIMARY KEY AUTO_INCREMENT," +
                     "nome VARCHAR(255)," +
-                    "descricao TEXT)";
+                    "municipio VARCHAR(255)," +
+                    "tipo VARCHAR(255)," +
+                    "URL_site VARCHAR(255)," +
+                    "descricao TEXT," +
+                    "URL_foto VARCHAR(255)," +
+                    "legenda_Foto TEXT," +
+                    "link_mapa VARCHAR(255)," +
+                    "fonte1_informacoes TEXT," +
+                    "link_fonte1 VARCHAR(255)," +
+                    "Mais_Informacoes1 TEXT," +
+                    "Link_Mais_Informacoes1 VARCHAR(255)," +
+                    "latitude DECIMAL(10, 8)," +
+                    "longitude DECIMAL(10, 8)," +
+                    "tipoAtrativo VARCHAR(255)," +
+                    "segmentacoes VARCHAR(255))";
             statement.executeUpdate(createTableAtrativoSQL);
             System.out.println("Tabela atrativo criada com sucesso.");
 
             // Criando a tabela de ligação segmentacao-atrativo
-            String createTableSegmentacaoAtrativoSQL = "CREATE TABLE segmentacao_atrativo (" +
+            String createTableSegmentacaoAtrativoSQL = "CREATE TABLE IF NOT EXISTS segmentacao_atrativo (" +
                     "id INT PRIMARY KEY AUTO_INCREMENT," +
                     "id_segmentacao INT," +
                     "id_atrativo INT," +
@@ -98,11 +112,10 @@ public class AtrativosBD {
             abrirConexao();
 
             String sql = "INSERT INTO atrativo (nome, municipio, tipo, URL_site, descricao, URL_foto, " +
-                    "legenda_foto, link_mapa, fonte1_informacoes, link_fonte1, fonte2_informacoes, " +
-                    "link_fonte2, fonte3_informacoes, link_fonte3, fonte4_informacoes, link_fonte4, " +
-                    "mais_informacoes1, link_mais_informacoes1, mais_informacoes2, link_mais_informacoes2, " +
-                    "mais_informacoes3, link_mais_informacoes3, latitude, longitude) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    "legenda_foto, link_mapa, fonte1_informacoes, link_fonte1, " +
+                    "mais_informacoes1, link_mais_informacoes1, " +
+                    " latitude, longitude) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement preparedStatement = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, atrativo.getNome());
@@ -115,10 +128,10 @@ public class AtrativosBD {
             preparedStatement.setString(8, atrativo.getLink_mapa());
             preparedStatement.setString(9, atrativo.getFonte1_informacoes());
             preparedStatement.setString(10, atrativo.getLink_fonte1());
-            preparedStatement.setString(17, atrativo.getMaisInformacoes1());
-            preparedStatement.setString(18, atrativo.getLinkMaisInformacoes1());
-            preparedStatement.setBigDecimal(23, atrativo.getLatitude());
-            preparedStatement.setBigDecimal(24, atrativo.getLongitude());
+            preparedStatement.setString(11, atrativo.getMaisInformacoes1());
+            preparedStatement.setString(12, atrativo.getLinkMaisInformacoes1());
+            preparedStatement.setBigDecimal(13, atrativo.getLatitude());
+            preparedStatement.setBigDecimal(14, atrativo.getLongitude());
 
             int linhasAfetadas = preparedStatement.executeUpdate();
             if (linhasAfetadas == 1) {
