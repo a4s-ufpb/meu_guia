@@ -152,9 +152,61 @@ public class AtrativosBD {
         return codigoAtrativo;
     }
 
+    public AtrativoTuristico pesquisarAtrativo(String nomeAtrativo) throws SQLException {
+        AtrativoTuristico atrativo = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            abrirConexao();
+
+            String query = "SELECT * FROM atrativo WHERE nome = ?";
+            statement = conexao.prepareStatement(query);
+            statement.setString(1, nomeAtrativo);
+            resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String municipio = resultSet.getString("municipio");
+                String tipo = resultSet.getString("tipo");
+                String URL_site = resultSet.getString("URL_site");
+                String descricao = resultSet.getString("descricao");
+                String URL_foto = resultSet.getString("URL_foto");
+                String legenda_Foto = resultSet.getString("legenda_Foto");
+                String link_mapa = resultSet.getString("link_mapa");
+                String fonte1_informacoes = resultSet.getString("fonte1_informacoes");
+                String link_fonte1 = resultSet.getString("link_fonte1");
+                String MaisInformacoes1 = resultSet.getString("MaisInformacoes1");
+                String LinkMaisInformacoes1 = resultSet.getString("LinkMaisInformacoes1");
+                BigDecimal latitude = resultSet.getBigDecimal("latitude");
+                BigDecimal longitude = resultSet.getBigDecimal("longitude");
+                TipoAtrativo tipoAtrativo = obterTipoAtrativo(resultSet); // Implemente a lógica para obter o TipoAtrativo
+                List<SegmentacaoTuristica> segmentacoes = obterSegmentacoes(resultSet); // Implemente a lógica para obter as segmentações
+                // TODO PEGAR OUTRAS INFORMAÇÕES QUE A TABELA PODE TER
+                // Crie o objeto AtrativoTuristico com os dados lidos do banco de dados
+                atrativo = new AtrativoTuristico(id, nomeAtrativo, municipio, tipo, URL_site, descricao, URL_foto,
+                        legenda_Foto, link_mapa, fonte1_informacoes, link_fonte1, MaisInformacoes1, LinkMaisInformacoes1,
+                        latitude, longitude, tipoAtrativo, segmentacoes);
+            }
+
+        } finally {
+            // Fechar ResultSet, PreparedStatement e Connection
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (statement != null) {
+                statement.close();
+            }
+            if (conexao != null) {
+                fecharConexao();
+            }
+        }
+
+        return atrativo;
+    }
+
     public List<AtrativoTuristico> listarAtrativos() throws SQLException {
         List<AtrativoTuristico> atrativos = new ArrayList<>();
-        Connection conexao = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
 
