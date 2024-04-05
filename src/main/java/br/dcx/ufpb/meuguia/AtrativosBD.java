@@ -67,8 +67,8 @@ public class AtrativosBD {
                     "link_fonte1 VARCHAR(255)," +
                     "Mais_Informacoes1 TEXT," +
                     "Link_Mais_Informacoes1 VARCHAR(255)," +
-                    "latitude DECIMAL(10, 8)," +
-                    "longitude DECIMAL(10, 8)," +
+                    "latitude DECIMAL(13, 10)," +
+                    "longitude DECIMAL(13, 10)," +
                     "tipoAtrativo VARCHAR(255)," +
                     "segmentacoes VARCHAR(255))";
             statement.executeUpdate(createTableAtrativoSQL);
@@ -91,6 +91,9 @@ public class AtrativosBD {
         }
     }
 
+
+
+
     public void apagarTabela(String nomeTabela) {
         try {
             abrirConexao();
@@ -104,6 +107,7 @@ public class AtrativosBD {
             fecharConexao();
         }
     }
+
 
     public int cadastrarAtrativo(AtrativoTuristico atrativo) {
         int codigoAtrativo = -1; // Código de retorno padrão
@@ -176,8 +180,8 @@ public class AtrativosBD {
                 String link_mapa = resultSet.getString("link_mapa");
                 String fonte1_informacoes = resultSet.getString("fonte1_informacoes");
                 String link_fonte1 = resultSet.getString("link_fonte1");
-                String MaisInformacoes1 = resultSet.getString("MaisInformacoes1");
-                String LinkMaisInformacoes1 = resultSet.getString("LinkMaisInformacoes1");
+                String MaisInformacoes1 = resultSet.getString("Mais_Informacoes1");
+                String LinkMaisInformacoes1 = resultSet.getString("Link_Mais_Informacoes1");
                 BigDecimal latitude = resultSet.getBigDecimal("latitude");
                 BigDecimal longitude = resultSet.getBigDecimal("longitude");
                 TipoAtrativo tipoAtrativo = obterTipoAtrativo(resultSet); // Implemente a lógica para obter o TipoAtrativo
@@ -213,7 +217,7 @@ public class AtrativosBD {
         try {
             abrirConexao();
 
-            String query = "SELECT * FROM atrativos"; // Supondo que o nome da tabela seja 'atrativos'
+            String query = "SELECT * FROM atrativo"; // Supondo que o nome da tabela seja 'atrativos'
             statement = conexao.prepareStatement(query);
             resultSet = statement.executeQuery();
 
@@ -229,8 +233,8 @@ public class AtrativosBD {
                 String link_mapa = resultSet.getString("link_mapa");
                 String fonte1_informacoes = resultSet.getString("fonte1_informacoes");
                 String link_fonte1 = resultSet.getString("link_fonte1");
-                String MaisInformacoes1 = resultSet.getString("MaisInformacoes1");
-                String LinkMaisInformacoes1 = resultSet.getString("LinkMaisInformacoes1");
+                String MaisInformacoes1 = resultSet.getString("Mais_Informacoes1");
+                String LinkMaisInformacoes1 = resultSet.getString("Link_Mais_Informacoes1");
                 BigDecimal latitude = resultSet.getBigDecimal("latitude");
                 BigDecimal longitude = resultSet.getBigDecimal("longitude");
                 TipoAtrativo tipoAtrativo = obterTipoAtrativo(resultSet); // Implemente a lógica para obter o TipoAtrativo

@@ -5,7 +5,9 @@ import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
 
+
 public class MeuGuia {
+
     public static void main(String[] args) throws SQLException {
         AtrativosBD atrativosBD = new AtrativosBD();
 
@@ -90,12 +92,20 @@ public class MeuGuia {
                         // Abrir conexão antes de chamar o método listarAtrativos
                         List<AtrativoTuristico> listaAtrativos = atrativosBD.listarAtrativos();
                         if (!listaAtrativos.isEmpty()) {
-                            StringBuilder sb = new StringBuilder();
-                            sb.append("Lista de Atrativos:\n");
+                            // Criar um JTextArea para exibir os atrativos
+                            JTextArea textArea = new JTextArea(20, 40);
+                            textArea.setEditable(false);
+
+                            // Preencher o JTextArea com os atrativos
                             for (AtrativoTuristico atrativo : listaAtrativos) {
-                                sb.append(atrativo.toString()).append("\n");
+                                textArea.append(atrativo.toString() + "\n\n");
                             }
-                            JOptionPane.showMessageDialog(null, sb.toString());
+
+                            // Colocar o JTextArea em um JScrollPane
+                            JScrollPane scrollPane = new JScrollPane(textArea);
+
+                            // Mostrar o JOptionPane com o JScrollPane
+                            JOptionPane.showMessageDialog(null, scrollPane, "Lista de Atrativos", JOptionPane.PLAIN_MESSAGE);
                         } else {
                             JOptionPane.showMessageDialog(null, "Nenhum atrativo cadastrado.");
                         }
@@ -106,6 +116,7 @@ public class MeuGuia {
                         atrativosBD.fecharConexao();
                     }
                     break;
+
 
 
                 case 3:

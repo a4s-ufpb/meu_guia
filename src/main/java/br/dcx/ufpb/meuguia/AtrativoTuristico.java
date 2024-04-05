@@ -283,6 +283,39 @@ public class AtrativoTuristico {
         this.tipo = tipo;
     }
 
+    @Override
+    public String toString() {
+        return "AtrativoTuristico{" +
+                "id=" + id +
+                ", nome='" + nome + "\n" +
+                ", municipio='" + municipio + "\n" +
+                ", tipo='" + tipo + "\n" +
+                ", URL_site='" + URL_site + "\n" +
+                ", descricao='" + descricao + "\n" +
+                ", URL_foto='" + URL_foto + "\n" +
+                ", legenda_Foto='" + legenda_Foto + "\n" +
+                ", link_mapa='" + link_mapa + "\n" +
+                ", fonte1_informacoes='" + fonte1_informacoes + "\n" +
+                ", link_fonte1='" + link_fonte1 + "\n" +
+                ", fonte2_informacoes='" + fonte2_informacoes + "\n" +
+                ", LinkFonte2='" + LinkFonte2 + "\n" +
+                ", Fonte3Informacoes='" + Fonte3Informacoes + "\n" +
+                ", LinkFonte3='" + LinkFonte3 + "\n" +
+                ", Fonte4Informacoes='" + Fonte4Informacoes + "\n" +
+                ", LinkFonte4='" + LinkFonte4 + "\n" +
+                ", MaisInformacoes1='" + MaisInformacoes1 + "\n" +
+                ", LinkMaisInformacoes1='" + LinkMaisInformacoes1 + "\n" +
+                ", MaisInformacoes2='" + MaisInformacoes2 + '\'' +
+                ", LinkMaisInformacoes2='" + LinkMaisInformacoes2 + '\'' +
+                ", MaisInformacoes3='" + MaisInformacoes3 + "\n" +
+                ", LinkMaisInformacoes3='" + LinkMaisInformacoes3 + "\n" +
+                ", latitude=" + latitude + "\n" +
+                ", longitude=" + longitude + "\n" +
+                ", tipoAtrativo=" + tipoAtrativo + "\n" +
+                ", segmentacoes=" + segmentacoes + "\n" +
+                '}';
+    }
+
     public AtrativoTuristico(long id, String nome, String municipio, String tipo, String URL_site, String descricao,
                              String URL_foto, String legenda_Foto, String link_mapa, String fonte1_informacoes,
                              String link_fonte1, String MaisInformacoes1, String LinkMaisInformacoes1,
